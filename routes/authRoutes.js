@@ -4,7 +4,7 @@ const { registrar, login, eliminarUsuario, obtenerUsuarios} = require('../contro
 
 router.post('/register', registrar);
 router.post('/login', login);
-router.delete('usuarios/:id', eliminarUsuario);
+router.delete('/usuarios/:id', eliminarUsuario);
 router.get('/usuarios', obtenerUsuarios); 
 
 module.exports = router;
