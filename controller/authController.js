@@ -49,6 +49,9 @@ const eliminarUsuario = async (req, res) => {
     res.status(500).json({ mensaje: 'Error al eliminar usuario', error });
   }
 };
+const obtenerUsuarios = async (req, res) => {
+  const usuarios = await Usuario.find({}, '-password'); // excluye contraseñas
+  res.json(usuarios);
+};
 
-
-module.exports = { registrar, login, eliminarUsuario };
+module.exports = { registrar, login, eliminarUsuario, obtenerUsuarios };
