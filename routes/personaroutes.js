@@ -1,8 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const { crearPersona, obtenerPersonas } = require('../controller/personacontroller');
+const personaController = require('../controllers/personaController');
 
-router.get('/', obtenerPersonas);
-router.post('/', crearPersona);
+router.get('/', personaController.obtenerPersonas);
+router.get('/:id', personaController.obtenerPersonaPorId);
+router.post('/', personaController.crearPersona);
+router.put('/:id', personaController.actualizarPersona);
+router.delete('/:id', personaController.eliminarPersona);
 
 module.exports = router;

@@ -1,8 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const { crearPlato, obtenerPlatos } = require('../controller/platoController');
+const platoController = require('../controllers/platoController');
 
-router.post('/', crearPlato);
-router.get('/', obtenerPlatos);
+router.get('/', platoController.obtenerPlatos);
+router.get('/:id', platoController.obtenerPlatoPorId);
+router.post('/', platoController.crearPlato);
+router.put('/:id', platoController.actualizarPlato);
+router.delete('/:id', platoController.eliminarPlato);
 
 module.exports = router;
