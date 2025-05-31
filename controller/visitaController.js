@@ -11,10 +11,19 @@ const registrarVisita = async (req, res) => {
 };
 
 const obtenerVisitas = async (req, res) => {
-  const visitas = await Visita.find({ usuario: req.usuario.id })
+  const filtro = {};
+
+  if (req.query.usuario) {
+    filtro.usuario = req.query.usuario;
+  }
+
+  const visitas = await Visita.find(filtro)
     .populate('sitio')
-    .populate('usuario');
+    .populate('usuario')
+    .sort({ fecha: -1 });
+
   res.json(visitas);
 };
+
 
 module.exports = { registrarVisita, obtenerVisitas };
