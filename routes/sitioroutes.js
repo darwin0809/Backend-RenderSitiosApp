@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const sitioController = require('../controllers/sitioController');
+const sitioController = require('../controller/sitioController');
 
 router.get('/', sitioController.obtenerSitios);
 router.get('/:id', sitioController.obtenerSitioPorId);

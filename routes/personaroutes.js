@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const personaController = require('../controllers/personaController');
+const personaController = require('../controller/personaController');
 
 router.get('/', personaController.obtenerPersonas);
 router.get('/:id', personaController.obtenerPersonaPorId);

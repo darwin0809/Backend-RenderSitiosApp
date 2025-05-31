@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const platoController = require('../controllers/platoController');
+const platoController = require('../controller/platoController');
 
 router.get('/', platoController.obtenerPlatos);
 router.get('/:id', platoController.obtenerPlatoPorId);
