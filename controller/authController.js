@@ -40,18 +40,20 @@ const login = async (req, res) => {
 };
 const eliminarUsuario = async (req, res) => {
   try {
-    const usuario = await Usuario.findByIdAndDelete(req.params.id);
-    if (!usuario) {
-      return res.status(404).json({ mensaje: 'Usuario no encontrado' });
-    }
-    res.json({ mensaje: 'Usuario eliminado correctamente' });
-  } catch (error) {
-    res.status(500).json({ mensaje: 'Error al eliminar usuario', error });
+    await Usuario.findByIdAndDelete(req.params.id);
+    res.json({ mensaje: 'Usuario eliminado' });
+  } catch (err) {
+    res.status(500).json({ error: 'Error al eliminar usuario' });
   }
 };
+
 const obtenerUsuarios = async (req, res) => {
-  const usuarios = await Usuario.find({}, '-password'); // excluye contraseñas
-  res.json(usuarios);
+  try {
+    const usuarios = await Usuario.find({}, '-password'); // excluye campo password
+    res.json(usuarios);
+  } catch (err) {
+    res.status(500).json({ error: 'Error al obtener usuarios' });
+  }
 };
 
 module.exports = { registrar, login, eliminarUsuario, obtenerUsuarios };

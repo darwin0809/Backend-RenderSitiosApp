@@ -4,6 +4,7 @@ const { registrar, login, eliminarUsuario } = require('../controller/authControl
 
 router.post('/register', registrar);
 router.post('/login', login);
-router.delete('/:id', eliminarUsuario);
+router.delete('usuarios/:id', eliminarUsuario);
+router.get('/usuarios', verificarToken, obtenerUsuarios); 
 
 module.exports = router;
